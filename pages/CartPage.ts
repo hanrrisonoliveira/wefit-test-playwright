@@ -1,14 +1,14 @@
 import type { Page, Locator } from '@playwright/test'
 
-// Os botões da linha não têm aria-label nem texto,
-// por isso são localizados pela posição: [0] "-", [1] "+", [2] lixeira.
 export class CartPage {
     readonly quantidades: Locator
     readonly total: Locator
     readonly btnFinalizarPedido: Locator
+    readonly tituloCarrinhoVazio: Locator
 
     constructor(private readonly page: Page) {
         const main = page.getByRole('main')
+        this.tituloCarrinhoVazio = main.getByRole('heading', { name: 'Parece que não há nada por aqui :(' })
         this.quantidades = main.getByRole('spinbutton')
         this.total = main.getByText('Total', { exact: true }).locator('..').getByText(/^R\$/)
         this.btnFinalizarPedido = main.getByRole('button', { name: 'Finalizar pedido' })
@@ -40,6 +40,10 @@ export class CartPage {
 
     async aumentar(filme: string) {
         await this.linha(filme).getByRole('button').nth(1).click()
+    }
+
+    async remover(filme: string) {
+        await this.linha(filme).getByRole('button').nth(2).click()
     }
 
     async finalizarPedido() {
