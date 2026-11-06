@@ -134,7 +134,7 @@ Especificação de 10 cenários de teste com critérios de aceitação para a ap
 **Passos:**
 
     1. Acessar a Home
-     2. Clicar 1 vez no botão "Adicionar ao carrinho" do filme "Viúva Negra"
+    2. Clicar 1 vez no botão "Adicionar ao carrinho" do filme "Viúva Negra"
     3. Acessar o carrinho pela cesta de compras
     4. Clicar em "Finalizar Pedido"
     5. Clicar no botão "Voltar" da tela de compra realizada
